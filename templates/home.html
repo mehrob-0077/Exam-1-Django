@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kino List</title>
+</head>
+<body>
+    <h1>Our movies</h1>
+    <div class="all">
+        {% for kino in kino %}
+            <div class="kino">
+                <img src="{{ kino.image.url }}" alt="">
+                <h4>{{ kino.age }}</h4>
+                <h2>{{ kino.title }}</h2>
+                <h3>{{ kino.kino_obj }}</h3>
+                <h3>{{ kino.time }}</h3>
+                <h4>{{ kino.price }}c</h4>
+            </div>
+       {% endfor %}
+    </div>
+
+</body>
+</html>
