@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="{% static 'feedback.css' %}">
+</head>
+<body>
+
+    <div class="feedback-container">
+        <h1>Send Feedback</h1>
+        <p>Share your feedback and suggestions with us.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label for="message">Your message</label>
+            <textarea id="message" name="message" placeholder="Write your feedback here..." required></textarea>
+
+            <button type="submit">Send Feedback</button>
+        </form>
+
+        <a href="{% url 'kino_list' %}">← Back to Movies</a>
+    </div>
+
+</body>
+</html>

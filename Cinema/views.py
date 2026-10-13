@@ -13,12 +13,10 @@ def kino_create_view(request):
         price = request.POST.get("price")
         age = request.POST.get("age")
         image = request.FILES.get("image")
-        kino_id = request.POST.get("kino")
-        kino_obj = get_list_or_404(kino_id=kino_obj)
 
-        Kino.objects.create(title=title, description=description, time=time, price=price, age=age,image=image,kino_obj=kino_obj)
+        Kino.objects.create(title=title, description=description, time=time, price=price, age=age,image=image)
         return redirect("kino_list")
-    return render(request,"kino_create.html")
+    return render(request,"create.html")
 
 def kino_update_view(request,pk):
     kino = Kino.objects.get(id=pk)
@@ -32,15 +30,15 @@ def kino_update_view(request,pk):
             kino.image = request.FILES.get("image")
         kino.save()
 
-        return redirect("kino_list", pk=kino.id)
-    return render(request,"kino_update.html", context={"kino":kino})
+        return redirect("kino_list")
+    return render(request,"update.html", context={"kino":kino})
 
 def kino_dalete_view(request,pk):
     kino = Kino.objects.get(id=pk)
     if request.method == "POST":
         kino.delete()
         return redirect("kino_list")
-    return render(request,"menu_dalete.html",context={"kino":kino})
+    return render(request,"dalete.html",context={"kino":kino})
 
 
 def feedback_create_view(request):
@@ -48,7 +46,7 @@ def feedback_create_view(request):
         message = request.POST.get("message")
         Feedback.objects.create(message=message)
         return redirect("kino_list")
-    return render(request,"feedback_create.html")
+    return render(request,"feedback.html")
 
 
 

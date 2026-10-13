@@ -1,23 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
     <title>Kino List</title>
 </head>
 <body>
+
     <h1>Our movies</h1>
+
     <div class="all">
         {% for kino in kino %}
             <div class="kino">
-                <img src="{{ kino.image.url }}" alt="">
+                <img src="{{ kino.image.url }}" alt="{{ kino.title }}">
+
                 <h4>{{ kino.age }}</h4>
                 <h2>{{ kino.title }}</h2>
                 <h3>{{ kino.kino_obj }}</h3>
                 <h3>{{ kino.time }}</h3>
                 <h4>{{ kino.price }}c</h4>
+
+                <div class="kino-buttons">
+                    <a href="{% url 'kino_update' pk=kino.id %}" class="btn-update">
+                        Update
+                    </a>
+
+                    <a href="{% url 'kino_dalete' pk=kino.id %}" class="btn-delete">
+                        Delete
+                    </a>
+                </div>
             </div>
-       {% endfor %}
+        {% endfor %}
     </div>
 
 </body>
